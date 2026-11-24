@@ -8,3 +8,7 @@ wheels/
 
 # Virtual environments
 .venv
+
+# Misc
+moulinette*
+vllm-0.10.1
