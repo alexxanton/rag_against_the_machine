@@ -6,6 +6,8 @@ class Index(PipelineStep):
         self.max_chunk_size = max_chunk_size
 
     def execute(self) -> None:
+        if not self._is_valid("max_chunk_size", int):
+            return
         print(self.max_chunk_size)
 
     def execute_dataset(self, p1: str, p2: str) -> None:
