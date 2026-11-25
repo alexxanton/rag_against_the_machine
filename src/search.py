@@ -8,8 +8,12 @@ class Search(PipelineStep):
         self.query = query or ""
 
     def execute(self) -> None:
-        pass
+        if not self._is_valid("query", str):
+            return
+        if not self._is_valid("k", int):
+            return
 
     def execute_dataset(self, dataset_path: str, save_directory: str) -> None:
-        pass
-        #print(save_directory)
+        if not self._is_valid("k", int):
+            return
+        print(self.k)

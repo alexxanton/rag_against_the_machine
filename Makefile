@@ -9,7 +9,7 @@ index:
 search:
 	uv run python -m src search_dataset													\
 		--dataset_path data/datasets/UnansweredQuestions/dataset_docs_public.json	\
-		--k $(k)																		\
+		--k 1																		\
 		--save_directory data/output/search_results/UnansweredQuestions
 
 eval:
