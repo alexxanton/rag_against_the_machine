@@ -12,6 +12,7 @@ from chonkie import (
     RecursiveLevel
 )
 
+
 class Index(PipelineStep):
     """Loads the corpus to split it into chunks and indexes them."""
 
@@ -19,13 +20,17 @@ class Index(PipelineStep):
         levels=[
             RecursiveLevel(
                 delimiters=[
-                    "\n# ", "\n## ", "\n### ", "\n#### ", "\n##### ", "\n###### "
+                    "\n# ", "\n## ", "\n### ",
+                    "\n#### ", "\n##### ", "\n###### "
                 ],
                 include_delim="next"
             ),
             RecursiveLevel(delimiters=["\n\n"]),
             RecursiveLevel(delimiters=["\n"]),
-            RecursiveLevel(delimiters=[". ", "! ", "? "], include_delim="prev"),
+            RecursiveLevel(
+                delimiters=[". ", "! ", "? "],
+                include_delim="prev"
+            ),
             RecursiveLevel(whitespace=True),
         ]
     )
@@ -75,8 +80,6 @@ class Index(PipelineStep):
             chunks = chunker.chunk(file.read_text())
 
             stored_chunks.extend(self._store_chunks(chunks, file))
-            print(stored_chunks)
-            break
 
     def execute(self) -> None:
         if not self._is_valid("max_chunk_size", int):
