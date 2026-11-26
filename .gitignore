@@ -10,5 +10,6 @@ wheels/
 .venv
 
 # Misc
+*.swp
 moulinette*
 vllm-0.10.1
